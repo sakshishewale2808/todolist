@@ -37,6 +37,10 @@
               font-size:20px;
               cursor:pointer;
             }
+            .action-container{
+                display:flex;
+                justify-content:center;
+            }
         </style>
     </head>
     <body>
@@ -45,31 +49,30 @@
               Task Item
             </div>
         </div>
-            <div>
+            <div class="action-container">
                 <input type="text" id="input"/>
         <button type="button" onclick="add()">Add Review</button>
     </div>
         <script>
-            const todolist=[];
+            const todoList=[];
 
             function add(){
-                const inputElement = document.getElementById("input");
-                todolist.push(inputElement.value);
+                const inputElement = document.getElementById("input")
+                todoList.push(inputElement.value);
                 inputElement.value="";
-                rendertodolist();
+                renderToDoList()
+            }
 
 
-                function rendertodolist(){
-                    const insidecontainer = document.getElementById("to-do-container");
-                    insidecontainer.innerHtml="";
+                function  renderToDoList(){
+                    const insidecontainer = document.getElementById("to-do-container")
+                    insidecontainer.innerHtml=""
 
-                    for(const todoItem of todolist){
-                        insidecontainer.innerHtml+=`<div class="to-do-items">
-                            ${todoItem}
-                        </div>`;
+                    for(const todoItem of todoList){
+                        insidecontainer.innerHtml +=`<div class="to-do-items">${todoItem}</div>`;
                     }
                 }
-            }
+            
 
         </script>
     </body>
