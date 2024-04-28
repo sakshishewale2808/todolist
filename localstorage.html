@@ -54,27 +54,34 @@
         <button type="button" onclick="add()">Add Review</button>
     </div>
         <script>
-            let todoList=[];
+            let todoList = [];
 
-            function add(){
-                const inputElement = document.getElementById("input")
-                todoList.push(inputElement.value);
-                inputElement.value="";
-                renderToDoList()
+            const listFromLocalStorage = localStorage.getItem("todoList");
+            if(listFromLocalStorage)
+            {
+                todoList = JSON.parse(listFromLocalStorage);
+                renderToDoList();
             }
-
-
-
+            
+            function add(){
+                const inputElement = document.getElementById('input');
+                todoList.push(inputElement.value);
+                
+                localStorage.setItem("todoList", JSON.stringify(todoList));
+                inputElement.value = "";
+            
+                renderToDoList();
+            }
+            
             function renderToDoList(){
-                const insidecontainer = document.getElementById("to-do-container");
-                insidecontainer.innerHTML="";
-
-                for(const todoItem of todoList){
-                    insidecontainer.innerHTML +=`<div class="to-do-items">
-                        <input type="checkbox"/>
-                        ${todoItem}
-                   
-                    </div>`;
+                const listContainer = document.getElementById('to-do-container');
+                listContainer.innerHTML = "";
+            
+                for(const todoItem of todoList)
+                {
+                    listContainer.innerHTML += `<div class="to-do-items">
+                        <input type="checkbox">
+                        ${todoItem}</div>` ;
                 }
             }
 
