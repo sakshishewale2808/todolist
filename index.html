@@ -54,7 +54,7 @@
         <button type="button" onclick="add()">Add Review</button>
     </div>
         <script>
-            const todoList=[];
+            let todoList=[];
 
             function add(){
                 const inputElement = document.getElementById("input")
@@ -64,15 +64,19 @@
             }
 
 
-                function  renderToDoList(){
-                    const insidecontainer = document.getElementById("to-do-container")
-                    insidecontainer.innerHtml="";
 
-                    for(const todoItem of todoList){
-                        insidecontainer.innerHtml +=`<div class="to-do-items">${todoItem}</div>`;
-                    }
+            function renderToDoList(){
+                const insidecontainer = document.getElementById("to-do-container");
+                insidecontainer.innerHTML="";
+
+                for(const todoItem of todoList){
+                    insidecontainer.innerHTML +=`<div class="to-do-items">
+                        <input type="checkbox"/>
+                        ${todoItem}
+                   
+                    </div>`;
                 }
-            
+            }
 
         </script>
     </body>
