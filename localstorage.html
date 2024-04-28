@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>To Do List</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body{
+                background-color:#e6ffe6;
+            }
+            .to-do-container{
+                background-color:#ffa366;
+                height:400px;
+                justify-content:center;
+                border:2px solid #e65c00;
+                overflow-y:scroll;
+
+            }
+            .to-do-items{
+                background-color:#ffc2b3;
+                margin:10px;
+                width:300px;
+                font-size:20px;
+                border:1px solid white;
+                padding:5px;
+              
+           
+            }
+            button{
+              display:block;
+              justify-content:center;
+              margin:20px 30px;
+              padding:5px;
+              border-radius:20px;
+              font-size:20px;
+              cursor:pointer;
+            }
+            .action-container{
+                display:flex;
+                justify-content:center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="to-do-container" id="to-do-container">
+            <div class="to-do-items">
+              Task Item
+            </div>
+        </div>
+            <div class="action-container">
+                <input type="text" id="input"/>
+        <button type="button" onclick="add()">Add Review</button>
+    </div>
+        <script>
+            let todoList=[];
+
+            function add(){
+                const inputElement = document.getElementById("input")
+                todoList.push(inputElement.value);
+                inputElement.value="";
+                renderToDoList()
+            }
+
+
+
+            function renderToDoList(){
+                const insidecontainer = document.getElementById("to-do-container");
+                insidecontainer.innerHTML="";
+
+                for(const todoItem of todoList){
+                    insidecontainer.innerHTML +=`<div class="to-do-items">
+                        <input type="checkbox"/>
+                        ${todoItem}
+                   
+                    </div>`;
+                }
+            }
+
+        </script>
+    </body>
+</html>
