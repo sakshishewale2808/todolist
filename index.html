@@ -29,22 +29,48 @@
            
             }
             button{
+              display:block;
+              justify-content:center;
+              margin:20px 30px;
+              padding:5px;
+              border-radius:20px;
+              font-size:20px;
+              cursor:pointer;
             }
         </style>
     </head>
     <body>
-        <div class="to-do-container">
-            <div class="to-do-items">Nice Video</div>
-            <div class="to-do-items">Nice video</div>
-            <div class="to-do-items">Nice Video</div>
-            <div class="to-do-items">Nice video</div>
-            <div class="to-do-items">Nice Video</div>
-            <div class="to-do-items">Nice video</div>
-            <div class="to-do-items">Nice Video</div>
-            <div class="to-do-items">Nice video</div>  
-            <div class="to-do-items">Nice Video</div>
-            <div class="to-do-items">Nice video</div>
+        <div class="to-do-container" id="to-do-container">
+            <div class="to-do-items">
+              Task Item
+            </div>
         </div>
-        <button type="button">Add Review</button>
+            <div>
+                <input type="text" id="input"/>
+        <button type="button" onclick="add()">Add Review</button>
+    </div>
+        <script>
+            const todolist=[];
+
+            function add(){
+                const inputElement = document.getElementById("input");
+                todolist.push(inputElement.value);
+                inputElement.value="";
+                rendertodolist();
+
+
+                function rendertodolist(){
+                    const insidecontainer = document.getElementById("to-do-container");
+                    insidecontainer.innerHtml="";
+
+                    for(const todoItem of todolist){
+                        insidecontainer.innerHtml+=`<div class="to-do-items">
+                            ${todoItem}
+                        </div>`;
+                    }
+                }
+            }
+
+        </script>
     </body>
 </html>
